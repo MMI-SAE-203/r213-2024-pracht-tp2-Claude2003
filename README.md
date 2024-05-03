@@ -65,6 +65,7 @@ const maisonsListe = /* coller ici le tableau d'objet */
 ### Code du composant
 
 Faire le fichier [`/src/components/MaisonCard.vue`](/src/components/MaisonCard.vue)\
+
 Prendre modèle sur le CM/TD [`PersonneCard.vue`](https://github.com/ppierre/vue-base-tailwind/tree/vue3.3-test-personne#composant-avec-param%C3%A9tre)
 
 Pour le code du template, vous pouvez utiliser un des plugins Figma suivants :

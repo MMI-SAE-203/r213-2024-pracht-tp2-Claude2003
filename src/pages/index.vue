@@ -1,5 +1,8 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-const maisonsListe = [
+import MaisonCard from '@/components/MaisonCard.vue'
+import type { MaisonRecord } from '@/types'
+const maisonsListe: MaisonRecord[] = [
   {
     "Favori": false,
     "adresse": "123 Rue Principale, Ville, Pays",
@@ -92,8 +95,15 @@ const maisonsListe = [
   }
 ]
 
+console.log(maisonsListe);
+
+
 </script>
 
 <template>
-  <h1 class="text-2xl">Bonjour monde !</h1>
+  <div>
+      <MaisonCard  nomMaison="test"/>
+<MaisonCard v-bind="maisonsListe[0]" />
+    <h1 class="text-2xl">Bonjour monde !</h1>
+    </div>
 </template>

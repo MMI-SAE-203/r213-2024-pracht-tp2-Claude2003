@@ -103,7 +103,8 @@ console.log(maisonsListe);
 <template>
   <div>
       <MaisonCard  nomMaison="test"/>
-<MaisonCard v-bind="maisonsListe[0]" />
+<MaisonCard v-bind="maisonsListe[4 ]"/>
+<MaisonCard v-for="unMaison in maisonsListe" :key="unMaison.id" v-bind="unMaison" />
     <h1 class="text-2xl">Bonjour monde !</h1>
     </div>
 </template>

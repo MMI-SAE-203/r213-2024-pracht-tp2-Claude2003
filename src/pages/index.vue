@@ -2,20 +2,9 @@
 <script setup lang="ts">
 import MaisonCard from '@/components/MaisonCard.vue'
 import type { MaisonRecord } from '@/pocketbase-types'
+import { pb } from "@/backend";
 
-export async function allMaisonsFavori() {
-    try {
-        const Favori = await pb.collection('maison').getFullList({
-            filter: 'Favori=true',
-        });
-        return Favori;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
-
-/*const maisonsListe: MaisonRecord[] = [
+/* const maisonsListe: MaisonRecord[] = [
   {
     "Favori": false,
     "adresse": "123 Rue Principale, Ville, Pays",
@@ -107,10 +96,12 @@ export async function allMaisonsFavori() {
     "updated": "2024-04-11 12:13:28.726Z"
   }
 ]
+ */
+const maisonsListe =  await pb.collection('maison').getFullList( {
+        filter: 'Favori=true',
+    });
+ console.log(maisonsListe);
 
-console.log(maisonsListe);
-
-}**/
 </script>
 
 <template>

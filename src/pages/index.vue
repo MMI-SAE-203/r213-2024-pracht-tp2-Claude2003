@@ -1,8 +1,21 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import MaisonCard from '@/components/MaisonCard.vue'
-import type { MaisonRecord } from '@/types'
-const maisonsListe: MaisonRecord[] = [
+import type { MaisonRecord } from '@/pocketbase-types'
+
+export async function allMaisonsFavori() {
+    try {
+        const Favori = await pb.collection('maison').getFullList({
+            filter: 'Favori=true',
+        });
+        return Favori;
+    } catch (e) {
+        console.error(e);
+        return [];
+    }
+}
+
+/*const maisonsListe: MaisonRecord[] = [
   {
     "Favori": false,
     "adresse": "123 Rue Principale, Ville, Pays",
@@ -97,7 +110,7 @@ const maisonsListe: MaisonRecord[] = [
 
 console.log(maisonsListe);
 
-
+}**/
 </script>
 
 <template>

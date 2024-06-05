@@ -221,5 +221,80 @@ const props= defineProps<MaisonResponse<any>>()
   </div>
 </div>
 
+
+
 </template>
 
+Voici les commentaires ajoutés pour chaque ligne du code :
+
+```html
+<!-- Définit le script Vue en utilisant la syntaxe de la composition API et le langage TypeScript -->
+<script setup lang="ts">
+  // Importe le type MaisonResponse depuis '@/pocketbase-types'
+  import type { MaisonResponse } from '@/pocketbase-types'
+  // Importe le composant ImgPb depuis './ImgPb.vue'
+  import ImgPb from './ImgPb.vue';
+
+  // Définit les propriétés du composant en utilisant le type MaisonResponse
+  const props = defineProps<MaisonResponse<any>>()
+</script>
+
+<!-- Définit le modèle de la carte de la maison -->
+<template>
+  <!-- Conteneur principal de la carte de la maison -->
+  <div class="Maison-card border-2 p-1">
+    <!-- Affichage du nom de la maison -->
+    <p>nom : {{ nomMaison }}</p>
+    <!-- Affichage du prix de la maison -->
+    <p>prix : {{ prix }}</p>
+    <!-- Affichage du nombre de chambres -->
+    <p> Nombres de Chambres : {{ nbChambres }}</p>
+    <!-- Affichage du nombre de salles de bains -->
+    <p>  Nombres de salle de bains : {{ nbSdb }}</p>
+    <!-- Affichage de l'adresse de la maison -->
+    <p>  Adresse : {{ adresse }}</p>
+    <!-- Affichage de la surface de la maison -->
+    <p>  Surface : {{ surface }}</p>
+    <!-- Affichage de l'état "Favori" -->
+    <p>Favori : {{ Favori ? 'oui' : 'non' }}</p>
+  </div>
+
+  <!-- Conteneur pour l'image de la maison -->
+  <div class="flex flex-col justify-start items-start w-[506px] relative rounded-lg bg-white border-[1.5px] border-indigo-100">
+    <!-- Conteneur pour l'image -->
+    <div class="self-stretch flex-grow-0 flex-shrink-0 h-[200px]">
+      <!-- Image de fond -->
+      <div class="w-[506px] h-[200px] absolute left-[-0.5px] top-[-0.5px] rounded-tl-lg rounded-tr-lg bg-gray-500"></div>
+      <!-- Composant ImgPb pour afficher l'image de la maison -->
+      <ImgPb :record="props" :filename="image" :width="387" :height="235" class="w-[506px] h-[235px] absolute left-[-0.5px] top-[-24.5px] object-cover" />
+    </div>
+    <!-- Informations sur la maison -->
+    <div class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-4 px-5 py-7">
+      <!-- Section du prix -->
+      <div class="flex justify-between items-start self-stretch flex-grow-0 flex-shrink-0 relative">
+        <!-- Prix de la maison -->
+        <div class="flex-grow-0 flex-shrink-0 w-[249px] h-[75px]">
+          <!-- Conteneur pour le prix et le texte "par mois" -->
+          <div class="flex justify-start items-end w-[164.11px] absolute left-0 top-0 gap-0.5">
+            <!-- Affichage du prix -->
+            <p class="flex-grow-0 flex-shrink-0 text-2xl font-bold text-left text-indigo-500">{{ prix }}</p>
+            <!-- Affichage du texte "par mois" -->
+            <p class="flex-grow-0 flex-shrink-0 w-[58px] h-8 text-base text-left text-gray-500">/month</p>
+          </div>
+          <!-- Affichage du nom de la maison -->
+          <p class="w-[249px] absolute left-0 top-[43px] text-2xl font-semibold text-left text-gray-900">{{ nomMaison }}</p>
+        </div>
+        <!-- Icône de favori -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="{{ Favori ? 'red' : 'white' }}" xmlns="http://www.w3.org/2000/svg" class="flex-grow-0 flex-shrink-0 w-12 h-12" preserveAspectRatio="xMidYMid meet">
+          <!-- Cercle de fond -->
+          <circle cx="24" cy="24" r="23.25" fill="white" stroke="#E0E7FF" stroke-width="1.5"></circle>
+          <!-- Icône de cœur -->
+          <path d="M16.318 18.318C15.9002 18.7359 15.5687 19.232 15.3425 19.778C15.1164 20.3239 15 20.9091 15 21.5C15 22.091 15.1164 22.6762 15.3425 23.2221C15.5687 23.7681 15.9002 24.2642 16.318 24.682L24 32.364L31.682 24.682C32.526 23.8381 33.0001 22.6935 33.0001 21.5C33.0001 20.3066 32.526 19.162 31.682 18.318C30.8381 17.4741 29.6935 17 28.5 17C27.3066 17 26.162 17.4741 25.318 18.318L24 19.636L22.682 18.318C22.2642 17.9002 21.7681 17.5687 21.2221 17.3425C20.6762 17.1164 20.091 17 19.5 17C18.9091 17 18.3239 17.1164 17.778 17.3425C17.232 17.5687 16.7359 17.9002 16.318 18.318V18.318Z" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <!-- Adresse de la maison -->
+      <p class="self-stretch flex-grow-0 flex-shrink-0 w-[466px] text-base text-left text-gray-500">{{ adresse }}</p>
+      <!-- Ligne de séparation -->
+      <svg width="466" height="2" viewBox="0 0 466 2" fill="none" xmlns="http://www.w3.org/2000/svg" class="self-stretch flex-grow-0 flex-shrink-0" preserveAspectRatio="xMidYMid meet">
+        <!-- Ligne -->
+        <line y1="1.

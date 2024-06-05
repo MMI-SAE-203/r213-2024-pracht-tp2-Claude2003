@@ -112,3 +112,43 @@ const maisonsListe =  await pb.collection('maison').getFullList( {
     <h1 class="text-2xl">Bonjour monde !</h1>
     </div>
 </template>
+
+Voici les commentaires pour chaque ligne du code :
+
+```html
+<!-- Désactive la vérification ESLint pour les noms de composants avec plusieurs mots -->
+<!-- eslint-disable vue/multi-word-component-names -->
+
+<!-- Définit le script Vue en utilisant la syntaxe de la composition API et le langage TypeScript -->
+<script setup lang="ts">
+  // Importe le composant MaisonCard depuis '@/components/MaisonCard.vue'
+  import MaisonCard from '@/components/MaisonCard.vue'
+  // Importe le type MaisonRecord depuis '@/pocketbase-types'
+  import type { MaisonRecord } from '@/pocketbase-types'
+  // Importe pb depuis "@/backend"
+  import { pb } from "@/backend";
+
+  // Récupère la liste de maisons favorites depuis la base de données
+  const maisonsListe = await pb.collection('maison').getFullList({
+    filter: 'Favori=true',
+  });
+  // Affiche la liste des maisons favorites dans la console
+  console.log(maisonsListe);
+</script>
+
+<!-- Définit le modèle de la page -->
+<template>
+  <!-- Conteneur principal -->
+  <div>
+    <!-- Affiche un composant MaisonCard avec un nom de maison statique -->
+    <MaisonCard nomMaison="test"/>
+    <!-- Affiche un composant MaisonCard avec les données de la cinquième maison de la liste -->
+    <MaisonCard v-bind="maisonsListe[4]"/>
+    <!-- Affiche un composant MaisonCard pour chaque maison dans la liste -->
+    <MaisonCard v-for="unMaison in maisonsListe" :key="unMaison.id" v-bind="unMaison" />
+    <!-- Titre de la page -->
+    <h1 class="text-2xl">Bonjour monde !</h1>
+  </div>
+</template>
+```
+
